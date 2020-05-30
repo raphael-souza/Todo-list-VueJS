@@ -32,7 +32,7 @@
         <div class="container">
           <div class="content has-text-centered">
             <p>
-              <strong>VueJS Tutorial</strong> by <a href="http://github.com/kessiacastro">Késsia Castro</a>.
+              <strong>VueJS Tutorial</strong> by <a href="">Raphael Souza</a>.
             </p>
           </div>
         </div>

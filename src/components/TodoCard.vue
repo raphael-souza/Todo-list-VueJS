@@ -9,15 +9,26 @@
       </div>
     </header>
     <div class="card-content">
-      <div class="content"></div>
-      <div class="content"></div>
+      <div class="content">
+        <new-todo @newTask="addTask"></new-todo>
+      </div>
+      <div class="content">
+        <todo-list :tasks="tasks" @check="checkTask" @delete="deleteTask"></todo-list>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import NewTodo from './NewTodo.vue'
+import TodoList from './TodoList.vue'
+
 export default {
   name: 'todo-card',
+  components: {
+    NewTodo,
+    TodoList
+  },
   data() {
     return {
       days: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'],
@@ -29,6 +40,19 @@ export default {
     today: function() {
       let newDate = new Date()
       return `${this.days[newDate.getDay()]}, ${newDate.getDate()} de ${this.months[newDate.getMonth()]}`
+    }
+  },
+
+  methods: {
+    addTask(task) {
+      let newTask = {'description': task, 'checked': false}
+      this.tasks.push(newTask)
+    },
+    checkTask(indexTask) {
+      this.tasks[indexTask]['checked'] = !this.tasks[indexTask]['checked']
+    },
+    deleteTask(indexTask) {
+      this.tasks.splice(indexTask,1)
     }
   }
 }
